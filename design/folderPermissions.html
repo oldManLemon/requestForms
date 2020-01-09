@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shared Ordner Friegabe</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Shared Ordner Friegabe</h3>
+        <form>
+            <div class="row">
+                <!-- Station Select -->
+                <div class="input-field col s3" class="validate">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="HAJ">HAJ</option>
+                        <option value="HAM">HAM</option>
+                        <option value="BRE">BRE</option>
+                        <option value="FRA">FRA</option>
+                        <option value="CGN">CGN</option>
+                        <option value="HQ">HQ</option>
+                        <option value="DUS">DUS</option>
+                        <option value="MUC">MUC</option>
+                        <option value="STR">STR</option>
+                    </select>
+                    <label>Station</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="folderPath" name="folderPath" type="text" class="validate">
+                    <label for="folderPath">Voll Ordnerpfad</label>
+                    <blockquote>
+                        Bitte geben Sie die voll pfad.</br>
+                        z.B H:\1 Month Public\IT AVIOVA
+                    </blockquote>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Add User -->
+                <div class="row" id="usr">
+                    <div class="input-field col s6">
+                        <input id="first_name_0" type="text" name="first_name_0" class="validate">
+                        <label for="first_name_0">Vorname</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name_0" type="text" name="last_name_0" class="validate">
+                        <label for="last_name_0">Nachname</label>
+                    </div>
+                    <p>
+                        <label>
+                            <input name="group0" type="radio" value="L" checked />
+                            <span>Lesen</span>
+                        </label>
+                        <label>
+                            <input name="group0" type="radio" value="vz" />
+                            <span>Vollzugriff</span>
+                        </label>
+                    </p>
+                </div>
+
+            </div>
+            <div class="row">
+                <button id="btnReplace" class="btn" type="button" onclick="addUsr(0)">Add User</button>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col l2 m8 s6">
+                    <button class="btn blue" type="submit">Senden</button>
+                    <button class="btn red" type="reset">Reset</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    let count = 1
+    //Quick and Dirty Add user to list
+    function addUsr() {
+
+        let row = document.getElementById("usr");
+        let outElem = document.createElement('div');
+        let newElem = `<div class="row"><div class="input-field col s6"> <input id="first_name_${count}" type="text" name="first_name_${count}" class="validate"> <label for="first_name_${count}">Vorname</label> </div> <div class="input-field col s6"> <input id="last_name_${count}" type="text" name="last_name_${count}" class="validate"> <label for="last_name_${count}">Nachname</label> </div> <p> <label> <input name="group${count}" type="radio" value="L" checked/> <span>Lesen</span> </label> <label> <input name="group${count}" type="radio" value="vz"/> <span>Vollzugriff</span> </label> </p></div>`
+        row.innerHTML += newElem;
+        // row.insertAdjacentElement= ('afterbegin', newElem);
+        console.log(count);
+        count++
+    }
+
+
+    //Basic selector function
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
+
+</html>
