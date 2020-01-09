@@ -1,25 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>New User Request Document</title>
-    
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
 </head>
+
 <body>
     <div class="container">
-        <h1>New User Request</h1> 
+        <h1>Neu Benutzer Anfrage</h1>
         <div class="row">
-            
+            <form class="col s12">
+                <div class="row">
+                    <!-- Station Select -->
+                    <div class="input-field col s3" class="validate">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="HAJ">HAJ</option>
+                            <option value="HAM">HAM</option>
+                            <option value="BRE">BRE</option>
+                            <option value="FRA">FRA</option>
+                            <option value="CGN">CGN</option>
+                            <option value="HQ">HQ</option>
+                            <option value="DUS">DUS</option>
+                            <option value="MUC">MUC</option>
+                            <option value="STR">STR</option>
+                        </select>
+                        <label>Station</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Basic User Info -->
+                    <div class="input-field col s6">
+                        <input id="first_name_new" type="text" name="first_name_new" class="validate">
+                        <label for="first_name_new">Vorname</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name_new" type="text" name="last_name_new" class="validate">
+                        <label for="last_name_new">Nachname</label>
+                    </div>
+                </div>
+                <p>
+                    <label>
+                        <input id="tempUsrShow" type="checkbox" />
+                        <span>Template Benutzer</span>
+                    </label>
+                </p>
+                <div class="row" id="templateUser" style="display: none">
+                    <!-- Template User Info -->
+                    <div class="input-field col s6">
+                        <input id="first_name_temp" type="text" name="first_name_temp" class="validate">
+                        <label for="first_name_temp">Vorname</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name_temp" type="text" name="last_name_temp" class="validate">
+                        <label for="last_name_temp">Nachname</label>
+                    </div>
+                    <button class="btn">Check</button>
+                </div>
+                <div class="row">
+                    <h3>Extra Zugangen</h3>
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Email</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>VPN</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>ERP</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>???</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="notes" class="materialize-textarea"></textarea>
+                        <label for="notes">Besondere Anfrage</label>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col l2 m8 s6">
+                        <button class="btn blue" type="submit">Senden</button>
+                        <button class="btn red" type="reset">Reset</button>
+                    </div>
+                   
+                </div>
+            </form>
         </div>
     </div>
-    
+
 </body>
+<script>
+    //Template User Show Hide
+    let tempUserShow = document.getElementById("tempUsrShow");
+    tempUserShow.addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById("templateUser").style.display = "";
+        } else {
+            document.getElementById("templateUser").style.display = "none";
+        }
+    });
+
+
+    //Basic selector function
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+
+
+</script>
+
 </html>
